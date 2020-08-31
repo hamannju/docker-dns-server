@@ -1,9 +1,7 @@
 # docker-dns-server
 Docker Compose Setup for a DoH DNS Server with Coredns -> PiHole -> Cloudflared
 
-To run this: 
-
- Clone the Repo &
+To run this clone the repo & 
  
  $ docker-compose up -d --build
 
