@@ -6,7 +6,7 @@ networks:
     ipam:
       config:
         - subnet: 10.202.202.0/24
-    
+
 services:
   coredns:
     container_name: coredns
@@ -14,8 +14,9 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-    volumes: 
-      - './config/coredns/:/etc/coredns:ro'
+    volumes:
+      - "./config/coredns/:/etc/coredns:ro"
+      - "./config/coredns/zones:/etc/coredns/zones:ro"
     restart: unless-stopped
     read_only: true
     networks:
@@ -29,14 +30,14 @@ services:
       - "80:80/tcp"
       - "443:443/tcp"
     environment:
-      TZ: 'Europe/Berlin'
-      WEBPASSWORD: 'test12345'
+      TZ: "Europe/Berlin"
+      WEBPASSWORD: "test12345"
       ServerIP: 10.42.0.2
       DNS1: 10.202.202.4#5053
       DNS2: 10.202.202.4#5053
     volumes:
-       - './config/pihole/pihole/:/etc/pihole/'
-       - './config/pihole/dnsmasq/:/etc/dnsmasq.d/'
+      - "./config/pihole/pihole/:/etc/pihole/"
+      - "./config/pihole/dnsmasq/:/etc/dnsmasq.d/"
     dns:
       - 127.0.0.1
       - 8.8.8.8
