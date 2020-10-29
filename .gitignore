@@ -1,1 +1,3 @@
 config/pihole
+config/coredns/Corefile
+config/coredns/zones
