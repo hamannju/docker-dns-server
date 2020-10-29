@@ -1,6 +1,5 @@
 version: "3"
 
-# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
 networks:
   default:
     ipam:
@@ -10,13 +9,13 @@ networks:
 services:
   coredns:
     container_name: coredns
-    build: ./coredns-docker/
+    build: ../coredns-docker/
     ports:
       - "53:53/tcp"
       - "53:53/udp"
     volumes:
-      - "./config/coredns/:/etc/coredns:ro"
-      - "./config/coredns/zones:/etc/coredns/zones:ro"
+      - "../config/coredns/:/etc/coredns:ro"
+      - "../config/coredns/zones:/etc/coredns/zones:ro"
     restart: unless-stopped
     read_only: true
     networks:
@@ -36,8 +35,8 @@ services:
       DNS1: 10.202.202.4#5053
       DNS2: 10.202.202.4#5053
     volumes:
-      - "./config/pihole/pihole/:/etc/pihole/"
-      - "./config/pihole/dnsmasq/:/etc/dnsmasq.d/"
+      - "../config/pihole/pihole/:/etc/pihole/"
+      - "../config/pihole/dnsmasq/:/etc/dnsmasq.d/"
     dns:
       - 127.0.0.1
       - 8.8.8.8
